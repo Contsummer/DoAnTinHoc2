@@ -1,5 +1,5 @@
 ﻿  Source.cpp
-C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAn2\DoAn2\Source.cpp(65,20): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAn2\DoAn2\Source.cpp(243): warning C4715: 'Subtraction': not all control paths return a value
-C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAn2\DoAn2\Source.cpp(720): warning C4715: 'docFile': not all control paths return a value
-  DoAn2.vcxproj -> C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAn2\x64\Debug\DoAn2.exe
+C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAnTinHoc2\DoAn2\DoAn2\Source.cpp(65,20): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAnTinHoc2\DoAn2\DoAn2\Source.cpp(243): warning C4715: 'Subtraction': not all control paths return a value
+C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAnTinHoc2\DoAn2\DoAn2\Source.cpp(732): warning C4715: 'docFile': not all control paths return a value
+  DoAn2.vcxproj -> C:\Users\conts\Desktop\hoc\DoANTinHoc\DoAnTinHoc2\DoAn2\x64\Debug\DoAn2.exe

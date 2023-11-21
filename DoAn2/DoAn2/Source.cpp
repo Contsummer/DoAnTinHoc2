@@ -451,9 +451,8 @@ Node* Division(Node* a, Node* b) {
     void menu(Bang c[]) {
     int chon;
     int b = 0;
-    cout << endl;
     do {
-    system("CLS");
+    cout << endl;
     cout << "--------------------------------------------------------" << endl;
     cout << "| 1.Tao So               | 2. Tinh Toan                 |" << endl;
     cout << "|------------------------|------------------------------|" << endl;
@@ -466,6 +465,10 @@ Node* Division(Node* a, Node* b) {
         subMenuTaoSo(c,b);
         break;
     case 2:
+        if (b == 0) {
+            cout << "\n Khong co so de tinh toan!";
+            break;
+        }
         int vitri1,vitri2;
         for (int i = 0; i < b; i++) {
             if (c[i] != nullptr) {
@@ -476,8 +479,16 @@ Node* Division(Node* a, Node* b) {
         }
         cout << "\nChon so thu nhat : ";
         cin >> vitri1; 
+        while (vitri1 >= b) {
+            cout << "Vi tri sai , vui long nhap lai : "; 
+            cin >> vitri1;
+        }
         cout << "\nChon so thu hai : ";
         cin >> vitri2;
+        while (vitri2 >= b) {
+            cout << "Vi tri sai , vui long nhap lai : ";
+            cin >> vitri2;
+        }
         Node* a;
         Node* b; 
         a = c[vitri1];
@@ -498,6 +509,7 @@ Node* Division(Node* a, Node* b) {
 
 void subMenuTinhToan(Node* a , Node* b) {
     int chon;
+    system("CLS");
     do {
     cout << endl;
     cout << "|------------------------|------------------------------|" << endl;
@@ -667,10 +679,18 @@ void subMenuFile() {
     cin >> chon;
     switch (chon) {
     case 1:
-
+        cout << "|-------------------------------|------------------------------|" << endl;
+        cout << "| 1. Ghi File                   | 2.Doc File                   |" << endl;
+        cout << "|-------------------------------|------------------------------|" << endl;
+        cout << "| 3. Hien Thi Cac So Trong File | 4. Hien thi cac so hien co   |" << endl;
+        cout << "|-------------------------------|------------------------------|" << endl;
         break;
     case 2:
-       
+        cout << "|-------------------------------|------------------------------|" << endl;
+        cout << "| 1. Ghi File                   | 2.Doc File                   |" << endl;
+        cout << "|-------------------------------|------------------------------|" << endl;
+        cout << "| 3. Hien Thi Cac So Trong File | 4. Hien thi cac so hien co   |" << endl;
+        cout << "|-------------------------------|------------------------------|" << endl;
         break;
     case 3:
        
