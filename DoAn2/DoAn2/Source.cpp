@@ -62,7 +62,7 @@ Node* Add(Node* a, Node* b) {
         k->dau = true; 
         c = Subtraction(q, k);
         if (c->next->dau != false ) {
-            c->dau == false ; 
+            c->dau = false ; 
         }
         return c; 
     }
@@ -450,6 +450,8 @@ Node* Division(Node* a, Node* b) {
 
     void menu(Bang c[]) {
     int chon;
+    system("CLS");
+    string fileName = "Data.txt";
     int b = 0;
     do {
     cout << endl;
@@ -490,14 +492,14 @@ Node* Division(Node* a, Node* b) {
             cin >> vitri2;
         }
         Node* a;
-        Node* b; 
+        Node* d; 
         a = c[vitri1];
-        b = c[vitri2];
+        d = c[vitri2];
         
-        subMenuTinhToan(a,b);
+        subMenuTinhToan(a,d,c,b);
         break;
     case 3:
-        subMenuFile();
+        subMenuFile(fileName,c,b);
         break;
    
     }
@@ -507,8 +509,9 @@ Node* Division(Node* a, Node* b) {
     
 
 
-void subMenuTinhToan(Node* a , Node* b) {
+void subMenuTinhToan(Node* a , Node* b , Bang c[] , int& e) {
     int chon;
+    Node* f;
     system("CLS");
     do {
     cout << endl;
@@ -517,53 +520,80 @@ void subMenuTinhToan(Node* a , Node* b) {
     cout << "|------------------------|------------------------------|" << endl;
     cout << "| 3. Nhan                | 4. Chia                      |" << endl;
     cout << "|------------------------|------------------------------|" << endl;
-    cout << "|                     0. Thoat                          |" << endl;
+    cout << "| 0. Thoat               | 5. Thay doi so               |" << endl;
     cout << "|-------------------------------------------------------|" << endl;
     cout << "Nhap lua chon cua ban: ";
     cin >> chon;
     switch (chon) {
     case 1:
         system("CLS");
-
         inList(a);
         cout << " + ";
         inList(b);
         cout << " = " ;
-        inList(Add(a, b));
+         f = Add(a, b);
+        inList(f);
+        c[e] = f; 
+        e++;
         break;
     case 2:
         system("CLS");
-
         inList(a);
         cout << " - ";
         inList(b);
         cout << " = ";
-        inList(Subtraction(a, b));
+        f = Subtraction(a, b);
+        inList(f);
+        c[e] = f;
+        e++;
         break;
     case 3:
         system("CLS");
-
         inList(a);
         cout << " * ";
         inList(b);
         cout << " = ";
-        inList(times(a, b));
+        f = times(a, b);
+        inList(f);
+        c[e] = f;
+        e++;
         break;
     case 4:
         system("CLS");
-
         inList(a);
         cout << " / ";
         inList(b);
         cout << " = ";
-        inList(Division(a, b));
+        f = Division(a, b);
+        inList(f);
+        c[e] = f;
+        e++;
         break;
+    case 5:
+        for (int i = 0; i < e; i++) {
+            if (c[i] != nullptr) {
+                cout << "(" << i << ")" << ".";
+                inList(c[i]);
+                cout << endl;
+            }
+        }
+        int vitri ;
+        do{
+        cout << "\nChon so thu nhat : ";
+            cin >> vitri;
+            a = c[vitri];
+            cout << "\nChon so thu hai : ";
+            cin >> vitri;
+            b = c[vitri];
+        } while (vitri > e);
+        break; 
     }
     } while (chon != 0);
 }
 void subMenuTaoSo(Bang c[], int& b) {
     int chon; 
-    do {
+    system("CLS"); 
+   do {
         cout << endl;
         cout << "|------------------------|------------------------------|" << endl;
         cout << "| 1. Tao So              | 2. Sua So                    |" << endl;
@@ -605,7 +635,7 @@ void subMenuTaoSo(Bang c[], int& b) {
             }
         }
         cout << "\n Nhap vi tri  ban muon sua : ";
-        cin >> k;
+        cin >> k;   
         while (k >= b) {
             cout << "\n Vi tri sai ! Nhap lai : ";
             cin >> k;
@@ -647,6 +677,7 @@ void subMenuTaoSo(Bang c[], int& b) {
             else {
                 for (int i = 0; i < b; i++) {
                     if (c[i] != nullptr) {
+                        cout << "(" << i << ")" << ".";
                         inList(c[i]);
                         cout << endl;
                     }
@@ -669,7 +700,7 @@ void subMenuTaoSo(Bang c[], int& b) {
     } while (chon != 0);
 
 }
-void subMenuFile() {
+void subMenuFile(string fileName, Bang c[],int b ) {
     int chon; 
     cout << "|-------------------------------|------------------------------|" << endl;
     cout << "| 1. Ghi File                   | 2.Doc File                   |" << endl;
@@ -679,18 +710,12 @@ void subMenuFile() {
     cin >> chon;
     switch (chon) {
     case 1:
-        cout << "|-------------------------------|------------------------------|" << endl;
-        cout << "| 1. Ghi File                   | 2.Doc File                   |" << endl;
-        cout << "|-------------------------------|------------------------------|" << endl;
-        cout << "| 3. Hien Thi Cac So Trong File | 4. Hien thi cac so hien co   |" << endl;
-        cout << "|-------------------------------|------------------------------|" << endl;
+        for (int i = 0; i < b; i++) {
+        ghiFile(c[i],fileName);
+        }
         break;
     case 2:
-        cout << "|-------------------------------|------------------------------|" << endl;
-        cout << "| 1. Ghi File                   | 2.Doc File                   |" << endl;
-        cout << "|-------------------------------|------------------------------|" << endl;
-        cout << "| 3. Hien Thi Cac So Trong File | 4. Hien thi cac so hien co   |" << endl;
-        cout << "|-------------------------------|------------------------------|" << endl;
+ 
         break;
     case 3:
        
