@@ -2,6 +2,7 @@
 #include<iostream>
 #include <fstream>
 #include <cstdlib> 
+#include <sstream>
 const int listNumSize = 10;
 using namespace std;
 struct Node {
@@ -26,5 +27,8 @@ void xoaDau(Node*& a);
 void menu(Bang a[]);
 void subMenuTinhToan(Node* a, Node* b, Bang c[], int& e);
 void subMenuTaoSo(Bang c[], int& b);
-//void subMenuFile(string fileName, Bang c[], int b);
-//void ghiFile(Node* list, const string& fileName);
+void ghiFile(Node* list, const string& fileName);
+void nhapTuFile(Node*& a, string b);
+void docFile(const string& fileName, int& b, Bang c[]);
+void subMenuFile(string  fileName, Bang c[], int& b);
+void xoaDL(const string& fileName);
