@@ -3,9 +3,11 @@ int main() {
 	/*const size_t bufferSize = 8192;
 	char customBuffer[bufferSize];
 	cin.rdbuf()->pubsetbuf(customBuffer, bufferSize);*/
-	Bang d[10];
-	menu(d);
-
+	//Bang d[10];
+	//menu(d);
+	int a = 10;
+	int b = 50;
+	//cout << a / b; 
 	return 0;
 }
 

@@ -451,7 +451,7 @@ Node* Division(Node* a, Node* b) {
     void menu(Bang c[]) {
     int chon;
     system("CLS");
-    string fileName = "Data.txt";
+    const char* fileName = "Data.txt";
     int b = 0;
     do {
     cout << endl;
@@ -499,7 +499,7 @@ Node* Division(Node* a, Node* b) {
         subMenuTinhToan(a,d,c,b);
         break;
     case 3:
-        subMenuFile(fileName,c,b);
+        //subMenuFile(fileName,c,b);
         break;
    
     }
@@ -607,7 +607,6 @@ void subMenuTaoSo(Bang c[], int& b) {
     switch (chon) {
     case 1:
         system("CLS");
-
         Node* a;
         init(a);
         Nhap(a);
@@ -700,31 +699,105 @@ void subMenuTaoSo(Bang c[], int& b) {
     } while (chon != 0);
 
 }
-void subMenuFile(string fileName, Bang c[],int b ) {
-    int chon; 
-    cout << "|-------------------------------|------------------------------|" << endl;
-    cout << "| 1. Ghi File                   | 2.Doc File                   |" << endl;
-    cout << "|-------------------------------|------------------------------|" << endl;
-    cout << "| 3. Hien Thi Cac So Trong File | 4. Hien thi cac so hien co   |" << endl;
-    cout << "|-------------------------------|------------------------------|" << endl;
-    cin >> chon;
-    switch (chon) {
-    case 1:
-        for (int i = 0; i < b; i++) {
-        ghiFile(c[i],fileName);
+void subMenuFile(char* fileName, Bang c[],int b ) {
+    int chon;
+    system("CLS");
+    do {
+        cout << endl;
+        cout << "|------------------------|------------------------------|" << endl;
+        cout << "| 1. Ghi file            | 2. Doc file                  |" << endl;
+        cout << "|------------------------|------------------------------|" << endl;
+     /*   cout << "| 3. xoa so              | 4. Hien thi cac so hien co   |" << endl;
+        cout << "|------------------------|------------------------------|" << endl;*/
+        cout << "|                     0. Thoat                          |" << endl;
+        cout << "|-------------------------------------------------------|" << endl;
+        cout << "Nhap lua chon cua ban: ";
+        cin >> chon;
+        switch (chon) {
+        case 1:
+            system("CLS");
+            for (int i = 0; i < b; i++) {
+             //   ghiFile(c[i], fileName);
+            }
+            cout << "Ghi file thanh cong! ";
+            break;
+        case 2:
+            system("CLS");
+
+
+            int k;
+            for (int i = 0; i < b; i++) {
+                if (c[i] != nullptr) {
+                    cout << "(" << i << ")" << ".";
+                    inList(c[i]);
+                    cout << endl;
+                }
+            }
+            cout << "\n Nhap vi tri  ban muon sua : ";
+            cin >> k;
+            while (k >= b) {
+                cout << "\n Vi tri sai ! Nhap lai : ";
+                cin >> k;
+            }
+            Node* e;
+            init(e);
+            Nhap(e);
+            c[k] = e;
+            for (int i = 0; i < b; i++) {
+                if (c[i] != nullptr) {
+                    cout << "(" << i << ")" << ".";
+                    inList(c[i]);
+                    cout << endl;
+                }
+            }
+            break;
+        case 3:
+            system("CLS");
+
+            int vitri;
+            for (int i = 0; i < b; i++) {
+                if (c[i] != nullptr) {
+                    cout << "(" << i << ")" << ".";
+                    inList(c[i]);
+                    cout << endl;
+                }
+            }
+            cout << "\n Nhap so muon xoa : ";
+            cin >> vitri;
+            for (int i = vitri; i < b; i++) {
+                c[i] = c[i + 1];
+            }
+            c[b - 1] = nullptr;
+            delete c[b - 1];
+            b--;
+            if (b == 0) {
+                cout << "\n Danh sach rong !";
+            }
+            else {
+                for (int i = 0; i < b; i++) {
+                    if (c[i] != nullptr) {
+                        cout << "(" << i << ")" << ".";
+                        inList(c[i]);
+                        cout << endl;
+                    }
+                }
+            }
+
+            break;
+        case 4:
+            system("CLS");
+
+            for (int i = 0; i < b; i++) {
+                if (c[i] != nullptr) {
+                    cout << "(" << i << ")" << ".";
+                    inList(c[i]);
+                    cout << endl;
+                }
+            }
+            break;
         }
-        break;
-    case 2:
+    } while (chon != 0);
  
-        break;
-    case 3:
-       
-        break;
-    case 4:
-       
-        break;
-    }
- while(chon != 0);
 }
 
 // UI/UX như cục cứt 
@@ -735,33 +808,42 @@ void subMenuFile(string fileName, Bang c[],int b ) {
 
 
 
+//void ghiFile(Node* list, const string& fileName) {
+//    ofstream outFile(fileName);
+//    Node* p = list; 
+//    if (outFile.is_open()) {
+//        outFile << list->dau;
+//        while (p != NULL)
+//        {
+//            outFile << p->so;
+//            p = p->next;
+//        }
+//        outFile.close();
+//    }
+//    else {
+//        cerr << "\n Khong mo duoc tep";
+//
+//    }
+//}
+//Node*  docFile(const string& fileName) {
+//    ifstream inFile;
+//    inFile.open(fileName);
+//    if (!inFile.is_open()) {
+//        cerr << "khong the mo tep tin ." << endl;
+//        return nullptr;
+//    }
+//
+//}
 
-void ghiFile(Node* list, const string& fileName) {
-    ofstream outFile(fileName);
-    Node* p = list; 
-    if (outFile.is_open()) {
-        outFile << list->dau;
-        while (p != NULL)
-        {
-            outFile << p->so;
-            p = p->next;
-        }
-        outFile.close();
-        cout << "\n Danh sach da duoc ghi !";
-    }
-    else {
-        cerr << "\n Khong mo duoc tep";
+//
+//void ghiFile(Node* list, const char* fileName) {
+//    FILE* file; 
+//    errno_t file_out;
+//    file_out = fopen_s(&file, fileName, "w");
+//    if (file == NULL) {
+//        cout << "\n Loi mo file!";
+//        return;
+//    }
+//    for(int i  = 0 ; i <b )
 
-    }
-}
-Node*  docFile(const string& fileName) {
-    ifstream inFile;
-    inFile.open(fileName);
-    if (!inFile.is_open()) {
-        cerr << "khong the mo tep tin ." << endl;
-        return nullptr;
-    }
-
-}
-
-
+//}

@@ -26,5 +26,5 @@ void xoaDau(Node*& a);
 void menu(Bang a[]);
 void subMenuTinhToan(Node* a, Node* b, Bang c[], int& e);
 void subMenuTaoSo(Bang c[], int& b);
-void subMenuFile(string fileName, Bang c[], int b);
-void ghiFile(Node* list, const string& fileName);
+//void subMenuFile(string fileName, Bang c[], int b);
+//void ghiFile(Node* list, const string& fileName);
