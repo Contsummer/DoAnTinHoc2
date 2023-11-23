@@ -370,7 +370,10 @@ void  Nhap(Node*& a) {
     int e; 
     cout << "\n Moi ban nhap so : "; 
     cin >> c;
-    
+    while (!kiemtraSo(c)) {
+        cout << "\n So khong hop le nhap lai : ";
+        cin >> c; 
+    }
     if (c[0] == '-') {
         e = c[1] - '0';
         themNode(a, e);
@@ -808,7 +811,15 @@ void xoaDL(const string& fileName) {
     outputFile.close();
 }
 
-
+bool kiemtraSo(string a) {
+    for (int i = 0; i < a.length(); i++) {
+        if (a[0] == '-')continue;
+        if (!isdigit(a[i])) {
+           return  false;
+        }
+    }
+    return true;
+}
 
 
 

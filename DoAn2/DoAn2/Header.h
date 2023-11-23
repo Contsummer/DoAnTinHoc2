@@ -32,3 +32,4 @@ void nhapTuFile(Node*& a, string b);
 void docFile(const string& fileName, int& b, Bang c[]);
 void subMenuFile(string  fileName, Bang c[], int& b);
 void xoaDL(const string& fileName);
+bool kiemtraSo(string a);
