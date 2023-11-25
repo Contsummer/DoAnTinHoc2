@@ -13,7 +13,7 @@ struct Node {
 typedef Node* Bang;
 Node* taoNode(int a);
 void themNode(Node*& list, int a);
-void inList(Node* list);
+void inList(Node*& list);
 Node* init(Node*& a);
 Node* daoChuoi(Node* head);
 Node* Add(Node* a, Node* b);
@@ -33,3 +33,4 @@ void docFile(const string& fileName, int& b, Bang c[]);
 void subMenuFile(string  fileName, Bang c[], int& b);
 void xoaDL(const string& fileName);
 bool kiemtraSo(string a);
+void ghiFile(Bang c[], const string& fileName, int b);

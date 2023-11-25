@@ -26,8 +26,8 @@ void themDauNode(Node*& list, int a) {
     b->next = list;
     list = b;
 }
-void inList(Node* list) {
-    Node* p = new Node;
+void inList(Node*& list) {
+    Node* p;
     xoaDau(list);
     p = list;
     int a = 1; 
@@ -43,6 +43,7 @@ void inList(Node* list) {
         p = p->next;
     }
 }
+
 Node* init(Node*& a) {
     return a = nullptr;
 }
@@ -114,7 +115,7 @@ Node* Add(Node* a, Node* b) {
     return c;
 }
 void xoaDau(Node*& a) {
-    if (a != nullptr) {
+    if (a != nullptr ){
         while (a->so == 0 && a->next != nullptr) {
             Node* temp = a;
             a = a->next;
@@ -547,8 +548,9 @@ void subMenuTinhToan(Node* a , Node* b , Bang c[] , int& e) {
         inList(b);
         cout << " = ";
         f = Subtraction(a, b);
-        inList(f);
+        xoaDau(f);
         c[e] = f;
+        inList(f);
         e++;
         break;
     case 3:
@@ -585,9 +587,17 @@ void subMenuTinhToan(Node* a , Node* b , Bang c[] , int& e) {
         do{
         cout << "\nChon so thu nhat : ";
             cin >> vitri;
+            while(vitri >= e) {
+                cout << "\n Vi tri sai! Nhap lai:";
+                cin >> vitri;
+            }
             a = c[vitri];
             cout << "\nChon so thu hai : ";
             cin >> vitri;
+            while (vitri >= e) {
+                cout << "\n Vi tri sai! Nhap lai:";
+                cin >> vitri;
+            }
             b = c[vitri];
         } while (vitri > e);
         break; 
@@ -720,9 +730,7 @@ void subMenuFile(string  fileName, Bang c[],int& b ) {
         switch (chon) {
         case 1:
             system("CLS");
-            for (int i = 0; i < b; i++) {
-              ghiFile(c[i], fileName);
-            }
+            ghiFile(c, fileName, b);
             cout << "Ghi file thanh cong! ";
             break;
         case 2:
@@ -740,26 +748,42 @@ void subMenuFile(string  fileName, Bang c[],int& b ) {
     } while (chon != 0);
  
 }
-
-void ghiFile(Node* list, const string& fileName) {
-    ofstream outputFile(fileName,ios_base::app);
+void ghiFile(Bang c[], const string& fileName, int b) {
+    ofstream outputFile(fileName, ios_base::trunc);
     if (!outputFile.is_open()) {
         cout << "Khong mo duoc file !" << endl;
         return;
     }
-    else {
-        Node* p = list; 
-        if (p->dau == false) {
-            outputFile <<0;
-        }
+    for (int i = 0; i < b; i++) {
+        Node* p = c[i];
+        if (p->dau == false) outputFile << 0;
         while (p != nullptr) {
             outputFile << p->so;
             p = p->next;
         }
         outputFile << "\n";
-        outputFile.close();
     }
+    outputFile.close();
 }
+//void ghiFile(Node* list, const string& fileName) {
+//    ofstream outputFile(fileName,ios_base::app);
+//    if (!outputFile.is_open()) {
+//        cout << "Khong mo duoc file !" << endl;
+//        return;
+//    }
+//    else {
+//        Node* p = list; 
+//        if (p->dau == false) {
+//            outputFile <<0;
+//        }
+//        while (p != nullptr) {
+//            outputFile << p->so;
+//            p = p->next;
+//        }
+//        outputFile << "\n";
+//        outputFile.close();
+//    }
+//}
 void docFile(const string& fileName , int& b ,Bang c[]) {
     b = 0;
     ifstream inputFile(fileName);
@@ -822,9 +846,6 @@ bool kiemtraSo(string a) {
 }
 
 
-
-
-
-
+// khi hien thị gặp 0 thì lỗi  
 
 
